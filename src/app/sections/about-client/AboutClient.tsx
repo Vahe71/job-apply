@@ -1,7 +1,7 @@
-import { EmptyStarIcon } from "../../../public/icons/EmptyStarIcon";
-import { FullStarIcon } from "../../../public/icons/FullStarIcon";
-import { HalfStarIcon } from "../../../public/icons/HalfStarIcon";
-import { PaymentVerifiedIcon } from "../../../public/icons/PaymentVerifiedIcon";
+import { EmptyStarIcon } from "../../../../public/icons/EmptyStarIcon";
+import { FullStarIcon } from "../../../../public/icons/FullStarIcon";
+import { HalfStarIcon } from "../../../../public/icons/HalfStarIcon";
+import { PaymentVerifiedIcon } from "../../../../public/icons/PaymentVerifiedIcon";
 
 interface AboutClientProps {
   jobData: {

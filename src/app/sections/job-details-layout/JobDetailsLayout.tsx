@@ -1,14 +1,15 @@
 "use client";
-import { JobDescription } from "@/app/job-description/JobDescription";
+import { JobDescription } from "@/app/sections/job-description/JobDescription";
 import { JobHeader } from "../job-header/JobHeader";
 import { useEffect } from "react";
 import { AboutClient } from "../about-client/AboutClient";
 import { InfoSectionGreen } from "@/components/InfoSectionGreen";
-import { CalendarIcon } from "../../../public/icons/CalendarIcon";
-import { PersonBrainIcon } from "../../../public/icons/PersonBrainIcon";
-import { MoneyIcon } from "../../../public/icons/MoneyIcon";
+import { CalendarIcon } from "../../../../public/icons/CalendarIcon";
+import { PersonBrainIcon } from "../../../../public/icons/PersonBrainIcon";
+import { MoneyIcon } from "../../../../public/icons/MoneyIcon";
 import { ClientHistory } from "../client-history/ClientHistory";
 import { JobSkills } from "../job-skills/JobSkills";
+import { AboutProject } from "../about-project/AboutProject";
 
 interface ClientHistoryItem {
   title: string;
@@ -55,6 +56,7 @@ export const JobDetailsLayout: React.FC<JobDetailsProps> = ({ jobData }) => {
         postedDate={jobData.postedDate}
         country={jobData.country}
         title={jobData.title}
+        buttonVisible={true}
       />
       <div className="flex  mt-[30px] gap-[34px]">
         <div className="max-w-[1040px]">
@@ -68,47 +70,7 @@ export const JobDetailsLayout: React.FC<JobDetailsProps> = ({ jobData }) => {
           </div>
           <div className="mt-[35px]">
             <InfoSectionGreen title="About" lineWidth="77px">
-              <div className="flex justify-between mt-[16px]">
-                <div className="flex gap-[8px]">
-                  <div>
-                    <CalendarIcon />
-                  </div>
-                  <div>
-                    <p className="font-medium text-[20px]">
-                      {jobData.projectScope}
-                    </p>
-                    <p className="text-[#545454] text-[14px] mt-[4px]">
-                      Project Scope
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-[8px]">
-                  <div>
-                    <PersonBrainIcon />
-                  </div>
-                  <div>
-                    <p className="font-medium text-[20px]">
-                      {jobData.projectExperienceLevel}
-                    </p>
-                    <p className="text-[#545454] text-[14px] mt-[4px]">
-                      Experience Level
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-[8px]">
-                  <div>
-                    <MoneyIcon />
-                  </div>
-                  <div>
-                    <p className="font-medium text-[20px]">
-                      ${jobData.projectBudget}
-                    </p>
-                    <p className="text-[#545454] text-[14px] mt-[4px]">
-                      Budget
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <AboutProject customStyles="flex mt-[16px] justify-between" jobData={jobData} />
             </InfoSectionGreen>
           </div>
           <div className="mt-[35px]">

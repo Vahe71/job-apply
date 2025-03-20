@@ -16,11 +16,12 @@ export const JobDescription: React.FC<JobDescriptionProps> = ({
           {list?.map((item, i) => {
             return (
               <li
-                className="text-[14px] text-[#545454] sm:text-[14px] lg:text-[16px] pl-[10px] flex items-center gap-[10px]"
+                className="text-[14px] text-[#545454] sm:text-[14px] lg:text-[16px] pl-[10px] flex items-center"
                 key={i}
               >
-                <div className="w-[4px] h-[4px] bg-[#545454] rounded-full"></div>
+                <div className="w-[4px] h-[4px] bg-[#545454] rounded-full mr-[10px]"></div>
                 {item}
+                {list.length-1 === i && <span className="text-[#18470D] underline decoration-[#18470D] ml-[5px]">read more</span>}
               </li>
             );
           })}

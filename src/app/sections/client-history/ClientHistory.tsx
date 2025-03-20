@@ -1,9 +1,9 @@
 "use client"
 import React, { useEffect } from "react";
-import { GreenFolderIcon } from "../../../public/icons/GreenFolderIcon";
-import { FullStarIcon } from "../../../public/icons/FullStarIcon";
-import { EmptyStarIcon } from "../../../public/icons/EmptyStarIcon";
-import { HalfStarIcon } from "../../../public/icons/HalfStarIcon";
+import { GreenFolderIcon } from "../../../../public/icons/GreenFolderIcon";
+import { FullStarIcon } from "../../../../public/icons/FullStarIcon";
+import { EmptyStarIcon } from "../../../../public/icons/EmptyStarIcon";
+import { HalfStarIcon } from "../../../../public/icons/HalfStarIcon";
 
 interface ClientStoryItem {
   title: string;
@@ -20,11 +20,6 @@ interface ClientHistoryProps {
 }
 
 export const ClientHistory: React.FC<ClientHistoryProps> = ({ history }) => {
-
-  useEffect(() => {
-    console.log(history);
-    
-  }, [history])
   return (
     <div>
       <div>

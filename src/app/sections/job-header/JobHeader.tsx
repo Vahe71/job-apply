@@ -1,15 +1,17 @@
-import { LocationIcon } from "../../../public/icons/LocationIcon";
+import { LocationIcon } from "../../../../public/icons/LocationIcon";
 
 interface JobHeaderProps {
   postedDate: string;
   country: string;
   title: string;
+  buttonVisible: boolean;
 }
 
 export const JobHeader: React.FC<JobHeaderProps> = ({
   postedDate,
   country,
   title,
+  buttonVisible
 }) => {
   return (
     <div className=" h-[125px] border-[1px] border-[#CBEC5E] rounded-[16px] p-[14px_28px_20px] flex justify-between">
@@ -23,9 +25,13 @@ export const JobHeader: React.FC<JobHeaderProps> = ({
           </div>
         </div>
       </div>
-      <div className="mt-[6px]">
-        <button className="w-[200px] h-[48px] rounded-[49px] bg-[#CBEC5E] text-[#18470D] font-medium cursor-pointer">Apply</button>
-      </div>
+      {buttonVisible && (
+        <div className="mt-[6px]">
+          <button className="w-[200px] h-[48px] rounded-[49px] bg-[#CBEC5E] text-[#18470D] font-medium cursor-pointer">
+            Apply
+          </button>
+        </div>
+      )}
     </div>
   );
 };

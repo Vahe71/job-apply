@@ -1,6 +1,6 @@
-import { JobDetailsLayout } from "./job-details-layout/JobDetailsLayout";
+import { JobDetailsLayout } from "./sections/job-details-layout/JobDetailsLayout";
 
-const jobData = {
+export const jobData = { // for example
   title: "Professional Makeup and Hair Styling",
   postedDate: "Posted 3 Hours ago",
   country: "Greece",
@@ -21,7 +21,7 @@ const jobData = {
     "Knowledge of professional haircare products and styling tools.",
     "Strong communication skills and ability to collaborate with clients to achieve their desired look.",
     "Attention to detail, creativity, and ability to work under time constraints.",
-    "Flexible schedule to accommodate event-based bookings. read more"
+    "Flexible schedule to accommodate event-based bookings."
   ],
   paymentVerified: true,
   rating: 5,
