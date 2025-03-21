@@ -10,21 +10,41 @@ import { AboutProject } from "../sections/about-project/AboutProject";
 import { JobApplyPopup } from "@/components/JobApplyPopup";
 import { useEffect, useState } from "react";
 import { JobDetailsPopup } from "@/components/JobDetailsPopup";
+import Link from "next/link";
 
 const JobApply = () => {
   const [popupVisible, setPopupVisible] = useState(false);
   const [jobDetailsPopupVisible, setJobDetailsPopupVisible] = useState(false);
+  const [jobApplyData, setJobApplyData] = useState({
+    paymentMethod: "milestone",
+    additionalInfo: "",
+    milestones: [{ id: 1, desc: '', dueDate: null, amount: null }],
+    
+  });
 
   useEffect(() => {
-    if (jobDetailsPopupVisible) {
-      document.body.style.overflow = 'hidden'
+    // delete this
+    console.log(jobApplyData);
+  }, [jobApplyData]);
+
+  const changeApplyData = (keyName: string, value: any) => {
+    if (jobApplyData.hasOwnProperty(keyName)) {
+      setJobApplyData({
+        ...jobApplyData,
+        [keyName]: value,
+      });
     }
+  };
+  useEffect(() => {
+    jobDetailsPopupVisible
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
   }, [jobDetailsPopupVisible]);
 
   return (
     <>
       {popupVisible && <JobApplyPopup setPopupVisible={setPopupVisible} />}
-      <main className="max-w-[1467px] mx-auto mt-[89px]">
+      <main className="lg:max-w-[1200px] 2xl:max-w-[1467px] mx-auto mt-[89px]">
         <h1 className="text-[40px] font-medium mb-[34px]">Apply for job</h1>
         <JobHeader
           postedDate={jobData.postedDate}
@@ -59,9 +79,12 @@ const JobApply = () => {
               </InfoSectionGreen>
             </div>
             <div className="mt-[30px]">
-              <InfoSectionGreen title="Milestones" lineWidth="111px">
+              <InfoSectionGreen title="Terms" lineWidth="111px">
                 <div className="mt-[16px]">
-                  <Milestones />
+                  <Milestones
+                    onChangeApplyData={changeApplyData}
+                    jobApplyData={jobApplyData}
+                  />
                 </div>
               </InfoSectionGreen>
             </div>
@@ -71,23 +94,35 @@ const JobApply = () => {
                 lineWidth="201px"
               >
                 <div className="mt-[16px]">
-                  <AdditionalInformation />
+                  <AdditionalInformation onChangeApplyData={changeApplyData} />
                 </div>
               </InfoSectionGreen>
             </div>
             <div className="mt-[53px] flex justify-end gap-[13px]">
-              <button className="text-[#18470D] text-[16px] w-[200px] h-[48px] rounded-[49px] border-[#CCCCCC] border-[1px] font-medium cursor-pointer">
-                Cancel
-              </button>
-              <button onClick={() => setPopupVisible(true)} className="p-[12px_35px] rounded-[49px] bg-[#CBEC5E] text-[#18470D] font-medium cursor-pointer">
+              <Link href={"/"}>
+                <button className="text-[#18470D] text-[16px] w-[200px] h-[48px] rounded-[49px] border-[#CCCCCC] border-[1px] font-medium cursor-pointer">
+                  Cancel
+                </button>
+              </Link>
+              <button
+                onClick={() => setPopupVisible(true)}
+                className="p-[12px_35px] rounded-[49px] bg-[#CBEC5E] text-[#18470D] font-medium cursor-pointer"
+              >
                 Submit your application
               </button>
             </div>
           </div>
         </div>
-      <button className="p-[20px] cursor-pointer orange" onClick={() => setJobDetailsPopupVisible(true)}>Job Details Layout Popup</button>
+        <button
+          className="p-[20px] cursor-pointer orange"
+          onClick={() => setJobDetailsPopupVisible(true)}
+        >
+          Job Details Layout Popup
+        </button>
       </main>
-      {jobDetailsPopupVisible && <JobDetailsPopup setPopupVisible={setJobDetailsPopupVisible} />}
+      {jobDetailsPopupVisible && (
+        <JobDetailsPopup setPopupVisible={setJobDetailsPopupVisible} />
+      )}
     </>
   );
 };

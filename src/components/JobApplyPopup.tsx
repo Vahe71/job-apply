@@ -19,7 +19,10 @@ export const JobApplyPopup: React.FC<PopupProps> = ({
         <div className="w-full flex justify-end">
           <div
             className="cursor-pointer"
-            onClick={() => setPopupVisible(false)}
+            onClick={() => {
+              setPopupVisible(false);
+              document.body.style.overflow = "auto";
+            }}
           >
             <CloseIcon />
           </div>
@@ -31,7 +34,7 @@ export const JobApplyPopup: React.FC<PopupProps> = ({
           Your application successfully sent
         </span>
         <p className="text-[14px] lg:text-[16px] text-[#545454] max-w-[390px] text-center mt-[23px]">
-        Wait the client response for your application.
+          Wait the client response for your application.
         </p>
         <div className="flex gap-[16px] mt-[30px] sm:mt-[59px] justify-center flex-wrap">
           <button className="w-[190px] h-[48px] text-[#18470D] text-[16px] border-1 border-[#CCCCCC] rounded-[50px] cursor-pointer font-medium">
