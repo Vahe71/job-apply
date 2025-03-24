@@ -6,7 +6,7 @@ export const AdditionalInformation: React.FC<
   AdditionalInformationProps
 > = ({onChangeApplyData}) => {
   return (
-    <div>
+    <div className="mb-[44px] sm:mb-[74px] lg:mb-[57px]">
       <div>
         <span className="text-[30px] font-medium">Additional Information</span>
       </div>

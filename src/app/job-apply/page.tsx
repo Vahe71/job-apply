@@ -19,7 +19,7 @@ const JobApply = () => {
     paymentMethod: "milestone",
     additionalInfo: "",
     milestones: [{ id: 1, desc: '', dueDate: null, amount: null }],
-    
+    bid: 0
   });
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const JobApply = () => {
   return (
     <>
       {popupVisible && <JobApplyPopup setPopupVisible={setPopupVisible} />}
-      <main className="lg:max-w-[1200px] 2xl:max-w-[1467px] mx-auto mt-[89px]">
+      <main className="px-[20px] sm:px-[40px] lg:px-0 lg:max-w-[1280px] 2xl:max-w-[1467px] mx-auto mt-[89px]">
         <h1 className="text-[40px] font-medium mb-[34px]">Apply for job</h1>
         <JobHeader
           postedDate={jobData.postedDate}
@@ -55,7 +55,7 @@ const JobApply = () => {
         <div className="flex  mt-[30px] gap-[34px]">
           <div className="w-full">
             <div className="">
-              <InfoSectionGreen title="Details" lineWidth="77px">
+              <InfoSectionGreen title="Details" lineWidth="w-[77px]">
                 <div className="flex">
                   <div className="max-w-[982px] mr-[32px]">
                     <JobDescription
@@ -72,14 +72,14 @@ const JobApply = () => {
               </InfoSectionGreen>
             </div>
             <div className="mt-[35px]">
-              <InfoSectionGreen title="Skills" lineWidth="77px">
+              <InfoSectionGreen title="Skills" lineWidth="w-[77px]">
                 <div className="mt-[16px]">
                   <JobSkills skills={jobData.jobSkills} />
                 </div>
               </InfoSectionGreen>
             </div>
             <div className="mt-[30px]">
-              <InfoSectionGreen title="Terms" lineWidth="111px">
+              <InfoSectionGreen title="Terms" lineWidth="w-[111px]">
                 <div className="mt-[16px]">
                   <Milestones
                     onChangeApplyData={changeApplyData}
@@ -91,7 +91,7 @@ const JobApply = () => {
             <div className="mt-[43px]">
               <InfoSectionGreen
                 title="Additional Information"
-                lineWidth="201px"
+                lineWidth="w-[201px]"
               >
                 <div className="mt-[16px]">
                   <AdditionalInformation onChangeApplyData={changeApplyData} />

@@ -9,6 +9,7 @@ interface MilestonesProps {
     paymentMethod: string;
     milestones: {id: number, desc: string, dueDate: Date | null, amount: number | null}[];
     additionalInfo: string;
+    bid: number
   };
   onChangeApplyData: (keyName: string, value: any) => void;
 }

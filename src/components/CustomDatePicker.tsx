@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"; // Убери, если будешь стилизовать вручную
 import { getYear, getMonth } from "date-fns";
+import { MiniCalendarIcon } from "../../public/icons/MiniCalendarIcon";
 
 interface DatePickerProps {
   changeMilestoneData: (key: string, id:number, newData: any) => void; 
@@ -44,7 +45,7 @@ const CustomDatePicker: React.FC<DatePickerProps> = ({changeMilestoneData, miles
           }
         }}
         dateFormat="dd.MM.yyyy"
-        className="focus:outline-none outline-none flex-grow px-4 py-2 text-[#8B939F] text-[16px] font-medium border-[1px] border-[#AEB3BC] rounded-[12px] h-[42px] p-[8px] block w-full"
+        className="focus:outline-none outline-none flex-grow text-[#8B939F] text-[16px] font-medium block w-full"
         calendarClassName="bg-white border border-gray-200 rounded-lg p-2"
         dayClassName={(date) =>
           "text-gray-900 hover:bg-blue-500 hover:text-white rounded-md w-10 h-10 flex items-center justify-center"

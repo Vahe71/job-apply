@@ -7,7 +7,11 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'sml': '830px'
+      }
+    },
   },
   plugins: [],
 };

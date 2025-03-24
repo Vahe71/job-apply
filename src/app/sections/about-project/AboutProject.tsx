@@ -15,14 +15,14 @@ export const AboutProject: React.FC<AboutProjectProps> = ({
     customStyles
 }) => {
   return (
-    <div className={`${customStyles} `}>
+    <div className={`${customStyles} mb-[44px]`}>
       <div className="flex gap-[8px]">
         <div>
           <CalendarIcon />
         </div>
         <div>
-          <p className="font-medium text-[20px]">{jobData.projectScope}</p>
-          <p className="text-[#545454] text-[14px] mt-[4px]">Project Scope</p>
+          <p className="font-medium text-[16px] sm:text-[20px]">{jobData.projectScope}</p>
+          <p className="text-[#545454] text-[14px] mt-[4px]">Work Scope</p>
         </div>
       </div>
       <div className="flex gap-[8px]">
@@ -30,7 +30,7 @@ export const AboutProject: React.FC<AboutProjectProps> = ({
           <PersonBrainIcon />
         </div>
         <div>
-          <p className="font-medium text-[20px]">{jobData.projectExperienceLevel}</p>
+          <p className="font-medium text-[16px] sm:text-[20px]">{jobData.projectExperienceLevel}</p>
           <p className="text-[#545454] text-[14px] mt-[4px]">
             Experience Level
           </p>
@@ -41,7 +41,7 @@ export const AboutProject: React.FC<AboutProjectProps> = ({
           <MoneyIcon />
         </div>
         <div>
-          <p className="font-medium text-[20px]">${jobData.projectBudget}</p>
+          <p className="font-medium text-[16px] sm:text-[20px]">${jobData.projectBudget}</p>
           <p className="text-[#545454] text-[14px] mt-[4px]">Budget</p>
         </div>
       </div>

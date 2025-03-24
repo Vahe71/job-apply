@@ -21,17 +21,17 @@ interface ClientHistoryProps {
 
 export const ClientHistory: React.FC<ClientHistoryProps> = ({ history }) => {
   return (
-    <div>
+    <div className="mb-[31px]">
       <div>
-        <span className="text-[30px] font-medium">Client’s Recent History</span>
+        <span className="text-[20px] sm:text-[24px] lg:text-[30px] font-medium">Client’s Recent History</span>
       </div>
-      <div className="2xl:mt-[24px] lg:mt-[42px]  mt-[46px] flex flex-col sm:gap-[16px] lg:gap-[26px] 2xl:gap-[26px] gap-[8px]">
+      <div className="2xl:mt-[24px] mt-[20px] sm:mt-[12px] lg:mt-[46px] flex flex-col gap-[20px] sm:gap-[30px]">
         {history.map((job, i) => {
           return (
             <div key={i}>
               <div className="flex justify-between items-center">
                 <span
-                  className={`text-[#18470D] text-[14px] max-w-[181px] sm:max-w-none sm:text-[20px] font-medium `}
+                  className={`text-[#18470D] text-[18px] lg:text-[20px] max-w-[188px] sm:max-w-none sm:text-[20px] font-medium `}
                 >
                   {job.title}
                 </span>
@@ -39,30 +39,30 @@ export const ClientHistory: React.FC<ClientHistoryProps> = ({ history }) => {
                   <GreenFolderIcon />
                 </div>
               </div>
-              <div className="flex text-[14px] sm:text-[16px] mt-[21px] text-[#545454] gap-[2px] items-center">
+              <div className="flex flex-col sm:flex-row text-[14px] sm:text-[16px] mt-[14px] sm:mt-[21px] text-[#545454] gap-[2px] gap-y-[10px] sm:items-center">
                 <div className="flex gap-[1px]">
                   {Array.from({ length: job.jobRating }).map((_, index) => (
-                    <div key={index}>
+                    <div key={index} className="w-[16px] h-[16px]">
                       <FullStarIcon />
                     </div>
                   ))}
-                  {!Number.isInteger(job.jobRating) && <HalfStarIcon />}
+                  {!Number.isInteger(job.jobRating) && <div className="w-[16px] h-[16px]"><HalfStarIcon /></div>}
                   {Array.from({ length: 5 - job.jobRating }).map(
                     (_, index) => (
-                      <div key={index}>
+                      <div key={index} className="w-[16px] h-[16px]">
                         <EmptyStarIcon />
                       </div>
                     )
                   )}
                 </div>
                 <div
-                  className={`ml-[10px] text-[14px] sm:text-[16px] text-[#545454] `}
+                  className={`sm:ml-[10px] text-[16px] text-[#545454] `}
                 >
                   {job.jobRating} | {job.startDate} - {job.endDate}
                 </div>
               </div>
               <p
-                className={`text-[#545454] text-[14px] sm:text-[16px] mt-[17px] `}
+                className={`text-[#545454] text-[16px] mt-[17px] `}
               >
                 {job.description}
               </p>

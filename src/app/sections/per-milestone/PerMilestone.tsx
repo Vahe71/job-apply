@@ -2,6 +2,8 @@
 
 import CustomDatePicker from "@/components/CustomDatePicker";
 import { useEffect, useState } from "react";
+import { TrashIcon } from "../../../../public/icons/TrashIcon";
+import { MiniCalendarIcon } from "../../../../public/icons/MiniCalendarIcon";
 
 interface MilestonesProps {
   jobApplyData: {
@@ -20,11 +22,11 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
   jobApplyData,
   onChangeApplyData,
 }) => {
-  const [isBrowser, setIsBrowser] = useState(false);
+  const [smallScreen, setSmallScreen] = useState(false);
 
   useEffect(() => {
     if (window.screen.width <= 1024) {
-      setIsBrowser(true);
+      setSmallScreen(true);
     }
   }, []);
   const addMilestone = () => {
@@ -47,10 +49,13 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
       })
     );
   };
-
-  const validateNumberInput = (value: string) => {
-    return value.replace(/^0+/, "").replace(/[^0-9]/g, "") || "1";
+  const deleteMilestone = (id: number) => {
+    onChangeApplyData(
+      "milestones",
+      jobApplyData.milestones.filter((milestone) => milestone.id !== id)
+    );
   };
+
   return (
     <div>
       <div className="mt-[39px]">
@@ -60,18 +65,18 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
         <div className="mt-[15px] flex flex-col gap-[18px]">
           {jobApplyData.milestones.map((item, i) => {
             return (
-              <div key={i} className="flex">
+              <div key={i} className="flex gap-[12px]">
                 <span
-                  className={`mr-[12px] ${
+                  className={`w-[12px] ${
                     i === 0 ? " mt-[44px] " : " mt-[9px] "
                   }`}
                 >
                   {i + 1}
                 </span>
-                <div className="flex w-full justify-between">
+                <div className="flex w-full justify-between items-center gap-[28px]">
                   <div className="flex w-full lg:max-w-[409px] 2xl:max-w-[637px]">
                     <div className="w-full">
-                      {(i === 0 || isBrowser) && (
+                      {(i === 0 || smallScreen) && (
                         <span className="block mb-[8px] text-[#545454] text-[18px]">
                           Description
                         </span>
@@ -89,37 +94,51 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
                     </div>
                   </div>
                   <div className="w-full lg:max-w-[314px] 2xl:max-w-[350px]">
-                    {(i === 0 || isBrowser) && (
+                    {(i === 0 || smallScreen) && (
                       <span className="block mb-[8px] text-[#545454] text-[18px]">
                         Due Date
                       </span>
                     )}
-                    <CustomDatePicker
-                      milestoneId={item.id}
-                      milestoneDate={item.dueDate}
-                      changeMilestoneData={changeMilestoneData}
-                    />
+
+                    <div className="border-[1px] border-[#AEB3BC] rounded-[12px] h-[42px] p-[8px] flex items-center">
+                      <CustomDatePicker
+                        milestoneId={item.id}
+                        milestoneDate={item.dueDate}
+                        changeMilestoneData={changeMilestoneData}
+                      />
+                      <MiniCalendarIcon />
+                    </div>
                   </div>
                   <div className="w-full lg:max-w-[314px] 2xl:max-w-[350px]">
-                    {(i === 0 || isBrowser) && (
+                    {(i === 0 || smallScreen) && (
                       <span className="block mb-[8px] text-[#545454] text-[18px]">
                         Amount
                       </span>
                     )}
 
-                    <input
-                      value={item.amount || ""}
-                      onChange={(e) =>
-                        changeMilestoneData(
-                          "amount",
-                          item.id,
-                          validateNumberInput(e.target.value)
-                        )
-                      }
-                      className="text-[#8B939F] text-[16px] font-medium border-[1px] border-[#AEB3BC] rounded-[12px] h-[42px] p-[8px] w-full outline-none"
-                      type="text"
-                      placeholder="€ 0.0"
-                    />
+                    <div className="flex gap-[5px]">
+                      <input
+                        value={item.amount || ""}
+                        onChange={(e) =>
+                          changeMilestoneData(
+                            "amount",
+                            item.id,
+                            +e.target.value
+                          )
+                        }
+                        className="text-[#8B939F] text-[16px] font-medium border-[1px] border-[#AEB3BC] rounded-[12px] h-[42px] p-[8px] w-full outline-none"
+                        type="text"
+                        placeholder="€ 0.0"
+                      />
+                      {i > 0 && (
+                        <div
+                          onClick={() => deleteMilestone(item.id)}
+                          className="min-w-[42px] h-[42px] rounded-full border-[1px] border-[#CBEC5E] flex justify-center items-center cursor-pointer"
+                        >
+                          <TrashIcon />
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

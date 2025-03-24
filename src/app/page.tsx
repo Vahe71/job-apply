@@ -50,8 +50,8 @@ export const jobData = { // for example
       toTalentName: 'Sophia M.'
     },
     {
-      title: "Algebra Tutoring for High School Student",
-      jobRating: 5,
+      title: "Glam Hairstyling for Red Carpet Event",
+      jobRating: 3.5,
       startDate: "Aug 5, 2024",
       endDate: "Nov 20, 2024",
       description:
@@ -75,7 +75,7 @@ export const jobData = { // for example
 export default function Home() {
   return (
     <div>
-      <div className="mt-[106px] mb-[198px]">
+      <div className="2xl:mt-[106px] sm:mt-[37px] mt-[42px] mb-[198px]">
         <JobDetailsLayout jobData={jobData} />
       </div>
     </div>

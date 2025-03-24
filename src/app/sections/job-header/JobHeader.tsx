@@ -15,21 +15,25 @@ export const JobHeader: React.FC<JobHeaderProps> = ({
   buttonVisible,
 }) => {
   return (
-    <div className=" h-[125px] border-[1px] border-[#CBEC5E] rounded-[16px] p-[14px_28px_20px] flex justify-between">
+    <div className="flex-wrap border-[1px] border-[#CBEC5E] rounded-[16px] 2xl:p-[14px_28px_20px] lg:p-[14px_28px_14px] sm:p-[10px_20px_16px] p-[12px_14px_20px] flex flex-col lg:flex-row justify-between gap-[12px] sm:gap-[19px]">
       <div>
-        <h1 className="text-[40px] font-medium">{title}</h1>
-        <div className="flex gap-[17px] text-[#545454] text-[16px] mt-[7px]">
+        <h1 className="max-w-[260px] sm:max-w-none 2xl:text-[40px] lg:text-[30px] sm:text-[28px] text-[20px] font-medium">
+          {title}
+        </h1>
+        <div className="flex 2xl:gap-[17px] sm:gap-[32px] gap-[40px] text-[#545454] sm:text-[18px] text-[14px] 2xl:text-[16px] lg:mt-[18px] 2xl:mt-[7px] sm:mt-[6px] mt-[6px]">
           <span>{postedDate}</span>
-          <div className="flex items-center gap-[2px]">
-            <LocationIcon />
+          <div className="flex items-center 2xl:gap-[2px] gap-[4px]">
+            <div className="w-[14px] h-[14px] sm:w-[16px] sm:h-[16px]">
+              <LocationIcon />
+            </div>
             <span>{country}</span>
           </div>
         </div>
       </div>
       {buttonVisible && (
-        <div className="mt-[6px]">
-          <Link href={'job-apply'}>
-            <button className="w-[200px] h-[48px] rounded-[49px] bg-[#CBEC5E] text-[#18470D] font-medium cursor-pointer">
+        <div>
+          <Link href={"job-apply"}>
+            <button className="lg:w-[200px] lg:h-[48px] sm:w-[149px] sm:h-[44px] w-[164px] h-[40px] rounded-[49px] bg-[#CBEC5E] text-[#18470D] font-medium cursor-pointer">
               Apply
             </button>
           </Link>

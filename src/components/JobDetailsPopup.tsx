@@ -13,7 +13,7 @@ export const JobDetailsPopup: React.FC<JobDetailsPopupProps> = ({
   return (
     <div className="w-[100vw] h-[100vh] bg-[rgba(0,_0,_0,_0.42)] z-10 fixed top-0 left-0 flex  overflow-hidden">
       <div className="w-full flex justify-end pt-[116px]">
-        <div className="bg-white p-[24px_20px_24px_40px] rounded-tl-[50px]  max-w-[1533px] w-full">
+        <div className="bg-white p-[24px_20px_24px_40px] rounded-tl-[50px] lg:max-h-[786px] 2xl:max-h-[964px] lg:max-w-[1250px] 2xl:max-w-[1533px] w-full">
           <div className="w-full flex justify-between">
             <div
               className="cursor-pointer"
@@ -29,8 +29,10 @@ export const JobDetailsPopup: React.FC<JobDetailsPopupProps> = ({
             </div>
           </div>
           <hr className="h-[1px] text-[#EAEAEA] mt-[24px]" />
-          <div className="py-[44px] overflow-y-auto h-full pr-[10px]">
-            <JobDetailsLayout jobData={jobData} />
+          <div className="py-[44px] overflow-y-auto h-full">
+            <div className=" overflow-y-auto pr-[10px]">
+              <JobDetailsLayout jobData={jobData} />
+            </div>
           </div>
         </div>
       </div>
