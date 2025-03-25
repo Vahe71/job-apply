@@ -27,10 +27,10 @@ export const JobApplyPopup: React.FC<PopupProps> = ({
             <CloseIcon />
           </div>
         </div>
-        <div className="w-[60px] h-[60px] sm:w-[75px] sm:h-[75px]">
+        <div className="w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] sm:w-[75px] sm:h-[75px]">
           <PopupCheckIcon />
         </div>
-        <span className="text-[16px] sm:text-[20px] lg:text-[26px] text-black font-medium mt-[6px] sm:mt-[27px]">
+        <span className="text-[16px] sm:text-[20px] lg:text-[26px] text-black font-medium mt-[6px] sm:mt-[27px] mt-[34px]">
           Your application successfully sent
         </span>
         <p className="text-[14px] lg:text-[16px] text-[#545454] max-w-[390px] text-center mt-[23px]">

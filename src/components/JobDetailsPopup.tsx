@@ -11,9 +11,9 @@ export const JobDetailsPopup: React.FC<JobDetailsPopupProps> = ({
   setPopupVisible,
 }) => {
   return (
-    <div className="w-[100vw] h-[100vh] bg-[rgba(0,_0,_0,_0.42)] z-10 fixed top-0 left-0 flex  overflow-hidden">
-      <div className="w-full flex justify-end pt-[116px]">
-        <div className="bg-white p-[24px_20px_24px_40px] rounded-tl-[50px] lg:max-h-[786px] 2xl:max-h-[964px] lg:max-w-[1250px] 2xl:max-w-[1533px] w-full">
+    <div className="flex items-end w-[100vw] h-[100vh] bg-[rgba(0,_0,_0,_0.42)] z-10 fixed top-0 left-0 flex  overflow-hidden">
+      <div className="w-full flex justify-end">
+        <div className="bg-white p-[24px_20px_24px_40px] rounded-tl-[50px] sm:max-h-[100vh] lg:max-h-[786px] 2xl:max-h-[964px] lg:max-w-[1250px] 2xl:max-w-[1533px] sm:max-w-[820px] w-full">
           <div className="w-full flex justify-between">
             <div
               className="cursor-pointer"
@@ -21,7 +21,7 @@ export const JobDetailsPopup: React.FC<JobDetailsPopupProps> = ({
             >
               <CloseIcon />
             </div>
-            <div className="flex items-center gap-[4px] cursor-pointer">
+            <div className="flex items-center gap-[4px] cursor-pointer 2xl:mr-[18px] lg:mr-[12px] sm:mr-[28px]">
               <OpenNewTab />
               <span className="text-[#18470D] text-[12px]">
                 Open in a new tab
@@ -31,7 +31,7 @@ export const JobDetailsPopup: React.FC<JobDetailsPopupProps> = ({
           <hr className="h-[1px] text-[#EAEAEA] mt-[24px]" />
           <div className="py-[44px] overflow-y-auto h-full">
             <div className=" overflow-y-auto pr-[10px]">
-              <JobDetailsLayout jobData={jobData} />
+              <JobDetailsLayout customStyles=" !px-0 " jobData={jobData} />
             </div>
           </div>
         </div>

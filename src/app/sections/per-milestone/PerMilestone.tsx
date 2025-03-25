@@ -58,11 +58,11 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
 
   return (
     <div>
-      <div className="mt-[39px]">
-        <p className="text-[20px] font-medium">
+      <div className="mt-[20px] sm:mt-[24px] lg:mt-[31px] mt-[39px]">
+        <p className="text-[16px] lg:text-[20px] font-medium">
           How many milestones would you like to set?
         </p>
-        <div className="mt-[15px] flex flex-col gap-[18px]">
+        <div className="mt-[22px] sm:mt-[12px] lg:mt-[15px] flex flex-col gap-[18px]">
           {jobApplyData.milestones.map((item, i) => {
             return (
               <div key={i} className="flex gap-[12px]">
@@ -73,8 +73,8 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
                 >
                   {i + 1}
                 </span>
-                <div className="flex w-full justify-between items-center gap-[28px]">
-                  <div className="flex w-full lg:max-w-[409px] 2xl:max-w-[637px]">
+                <div className="flex flex-col lg:flex-row w-full justify-between gap-[22px] lg:gap-[28px]">
+                  <div className="flex w-full lg:max-w-[409px] 2xl:max-w-[637px] max-w-[414px]">
                     <div className="w-full">
                       {(i === 0 || smallScreen) && (
                         <span className="block mb-[8px] text-[#545454] text-[18px]">
@@ -93,7 +93,7 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
                       />
                     </div>
                   </div>
-                  <div className="w-full lg:max-w-[314px] 2xl:max-w-[350px]">
+                  <div className="w-full lg:max-w-[314px] 2xl:max-w-[350px] max-w-[414px]">
                     {(i === 0 || smallScreen) && (
                       <span className="block mb-[8px] text-[#545454] text-[18px]">
                         Due Date
@@ -109,7 +109,7 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
                       <MiniCalendarIcon />
                     </div>
                   </div>
-                  <div className="w-full lg:max-w-[314px] 2xl:max-w-[350px]">
+                  <div className="w-full lg:max-w-[314px] 2xl:max-w-[350px] max-w-[414px]">
                     {(i === 0 || smallScreen) && (
                       <span className="block mb-[8px] text-[#545454] text-[18px]">
                         Amount
@@ -148,12 +148,12 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
         <div className="mt-[8px]">
           <span
             onClick={() => addMilestone()}
-            className="text-[#18470D] ml-[20px] select-none cursor-pointer"
+            className="text-[#18470D] text-[14px] sm:text-[16px] ml-[20px] select-none cursor-pointer"
           >
             +Add Milestone
           </span>
         </div>
-        <div className="border-t-[1px] mt-[43px] border-[#AEB3BC] text-[20px] text-center flex justify-between pt-[15px]">
+        <div className="border-t-[1px] mt-[43px] border-[#AEB3BC] text-[20px] text-center flex justify-between pt-[15px] pb-[24px] sm:pb-[28px] gap-[31px] flex-col sm:flex-row">
           <div>
             <p>Total cost</p>
             <p className="text-[#FF0000] ">€0.0</p>

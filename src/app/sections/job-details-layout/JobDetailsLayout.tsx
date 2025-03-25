@@ -1,12 +1,8 @@
 "use client";
 import { JobDescription } from "@/app/sections/job-description/JobDescription";
 import { JobHeader } from "../job-header/JobHeader";
-import { useEffect, useState } from "react";
 import { AboutClient } from "../about-client/AboutClient";
 import { InfoSectionGreen } from "@/components/InfoSectionGreen";
-import { CalendarIcon } from "../../../../public/icons/CalendarIcon";
-import { PersonBrainIcon } from "../../../../public/icons/PersonBrainIcon";
-import { MoneyIcon } from "../../../../public/icons/MoneyIcon";
 import { ClientHistory } from "../client-history/ClientHistory";
 import { JobSkills } from "../job-skills/JobSkills";
 import { AboutProject } from "../about-project/AboutProject";
@@ -47,11 +43,12 @@ interface JobDetailsProps {
     hires: number;
     active: number;
   };
+  customStyles?: string;
 }
 
-export const JobDetailsLayout: React.FC<JobDetailsProps> = ({ jobData }) => {
+export const JobDetailsLayout: React.FC<JobDetailsProps> = ({ jobData, customStyles }) => {
   return (
-    <main className="2xl:max-w-[1547px] lg:max-w-[1280px] sm:px-[40px] px-[20px] sm:max-w-[860px] mx-auto">
+    <main className={`2xl:max-w-[1547px] lg:max-w-[1280px] sm:px-[40px] px-[20px] sm:max-w-[860px] mx-auto ${customStyles}`}>
       <JobHeader
         postedDate={jobData.postedDate}
         country={jobData.country}

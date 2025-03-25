@@ -9,7 +9,7 @@ export const JobDescription: React.FC<JobDescriptionProps> = ({
 }) => {
   return (
     <div>
-      <p className="lg:text-[20px] sm:text-[16px] text-[14px] font-medium mt-[6px] lg:mt-[8px] ">
+      <p className="sm:text-[20px] text-[14px] font-medium mt-[6px] lg:mt-[8px] ">
         Description
       </p>
       <div className="text-[#545454] text-[14px] lg:text-[16px] lg:mt-[15px] sm:mt-[8px] mt-[10px] mb-[22px]">
