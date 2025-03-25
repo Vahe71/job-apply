@@ -5,7 +5,9 @@ import { AboutClient } from "../about-client/AboutClient";
 import { InfoSectionGreen } from "@/components/InfoSectionGreen";
 import { ClientHistory } from "../client-history/ClientHistory";
 import { JobSkills } from "../job-skills/JobSkills";
-import { AboutProject } from "../about-project/AboutProject";
+import { CalendarIcon } from "../../../../public/icons/CalendarIcon";
+import { PersonBrainIcon } from "../../../../public/icons/PersonBrainIcon";
+import { MoneyIcon } from "../../../../public/icons/MoneyIcon";
 
 interface ClientHistoryItem {
   title: string;
@@ -46,9 +48,14 @@ interface JobDetailsProps {
   customStyles?: string;
 }
 
-export const JobDetailsLayout: React.FC<JobDetailsProps> = ({ jobData, customStyles }) => {
+export const JobDetailsLayout: React.FC<JobDetailsProps> = ({
+  jobData,
+  customStyles,
+}) => {
   return (
-    <main className={`2xl:max-w-[1547px] lg:max-w-[1280px] sm:px-[40px] px-[20px] sm:max-w-[860px] mx-auto ${customStyles}`}>
+    <main
+      className={`2xl:max-w-[1547px] lg:max-w-[1280px] sm:px-[40px] px-[20px] sm:max-w-[860px] mx-auto ${customStyles}`}
+    >
       <JobHeader
         postedDate={jobData.postedDate}
         country={jobData.country}
@@ -62,15 +69,55 @@ export const JobDetailsLayout: React.FC<JobDetailsProps> = ({ jobData, customSty
               <JobDescription
                 list={jobData.descriptionList}
                 text={jobData.descriptionText}
+                customStyles=""
               />
             </InfoSectionGreen>
           </div>
           <div className="mt-[10px] lg:mt-[20px] 2xl:mt-[35px]">
             <InfoSectionGreen title="About" lineWidth="w-[77px]">
-              <AboutProject
-                customStyles="flex mt-[16px] justify-between flex-wrap gap-[16px] flex-col sm:flex-row"
-                jobData={jobData}
-              />
+              <div
+                className={`flex mt-[34px] sm:mt-[16px] justify-between flex-wrap gap-[16px] flex-col sm:flex-row mb-[12px] sm:mb-[44px]`}
+              >
+                <div className="flex gap-[8px]">
+                  <div className="2xl:w-[28px] 2xl:h-[28px] w-[24px] h-[24px]">
+                    <CalendarIcon />
+                  </div>
+                  <div>
+                    <p className="font-medium text-[16px] sm:text-[20px]">
+                      {jobData.projectScope}
+                    </p>
+                    <p className="text-[#545454] text-[14px] mt-[4px]">
+                      Work Scope
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[8px]">
+                  <div className="2xl:w-[28px] 2xl:h-[28px] w-[24px] h-[24px]">
+                    <PersonBrainIcon />
+                  </div>
+                  <div>
+                    <p className="font-medium text-[16px] sm:text-[20px]">
+                      {jobData.projectExperienceLevel}
+                    </p>
+                    <p className="text-[#545454] text-[14px] mt-[4px]">
+                      Experience Level
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[8px]">
+                  <div className="2xl:w-[28px] 2xl:h-[28px] w-[24px] h-[24px]">
+                    <MoneyIcon />
+                  </div>
+                  <div>
+                    <p className="font-medium text-[16px] sm:text-[20px]">
+                      ${jobData.projectBudget}
+                    </p>
+                    <p className="text-[#545454] text-[14px] mt-[4px]">
+                      Budget
+                    </p>
+                  </div>
+                </div>
+              </div>
             </InfoSectionGreen>
           </div>
           <div className="mt-[10px] lg:mt-[20px] 2xl:mt-[35px]">

@@ -21,7 +21,7 @@ interface ClientHistoryProps {
 
 export const ClientHistory: React.FC<ClientHistoryProps> = ({ history }) => {
   return (
-    <div className="mb-[31px]">
+    <div className="mb-[24px] sm:mb-[31px]">
       <div>
         <span className="text-[20px] sm:text-[24px] lg:text-[30px] font-medium">Client’s Recent History</span>
       </div>

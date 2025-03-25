@@ -59,6 +59,10 @@ body {
   color: #EAEAEA !important;
 }
 
+.react-datepicker__day--keyboard-selected:hover {
+  color: #414750 !important;
+}
+
 .react-datepicker__week {
   gap: 13px;
   display: flex;
@@ -86,7 +90,6 @@ body {
 .react-datepicker__day-names {
   display: flex;
   width: 251px !important;
-  height: 16px;
   justify-content: space-between;
   margin-left: 13px;
 }
@@ -147,3 +150,11 @@ body {
   /* Для Firefox */
 }
 
+.react-datepicker__tab-loop {
+  width: 100%;
+  position: relative;
+}
+
+.react-datepicker-popper {
+  width: calc(100% + 34px);
+}
