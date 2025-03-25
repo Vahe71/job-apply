@@ -24,7 +24,126 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.react-datepicker {
+  font-family: Poppins, Poppins Fallback !important;
+}
+
 .react-datepicker-wrapper {
   width: 100%;
   margin-bottom: 0;
 }
+
+.react-datepicker__header {
+  background-color: transparent !important;
+  padding-top: 0 !important;
+  border-bottom: none !important;
+}
+
+.react-datepicker__triangle {
+  display: none;
+}
+
+.react-datepicker__day-name {
+  color: #8B939F !important;
+  font-size: 13.33px !important;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.react-datepicker__day-name:hover {
+  color: #414750 !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: #18470D !important;
+  color: #EAEAEA !important;
+}
+
+.react-datepicker__week {
+  gap: 13px;
+  display: flex;
+}
+
+.react-datepicker__week {
+  margin-bottom: 16px;
+}
+
+.react-datepicker__today-button {
+  width: 100% !important;
+  height: 48px !important;
+  max-width: 300px !important;
+  background: #CBEC5E !important;
+  border-radius: 49px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none !important;
+  color: #18470D !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+.react-datepicker__day-names {
+  display: flex;
+  width: 251px !important;
+  height: 16px;
+  justify-content: space-between;
+  margin-left: 13px;
+}
+
+.react-datepicker__month {
+  margin-left: 12px !important;
+  width: 252px;
+}
+
+.react-datepicker__day--outside-month {
+  color: #8B939F !important;
+}
+
+.react-datepicker__day:not(.react-datepicker__day--outside-month, .react-datepicker__day--keyboard-selected, .react-datepicker__day--selected) {
+  color: #414750 !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  color: #EAEAEA !important;
+  font-weight: 400 !important;
+}
+
+.react-datepicker__day--selected {
+  background: #18470D !important;
+  color: #EAEAEA !important;
+}
+
+.react-datepicker__day.react-datepicker__day--selected:hover {
+  color: #414750 !important;
+}
+
+.react-datepicker__day {
+  font-weight: 400 !important;
+}
+
+.date-year-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.date-year-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.date-year-dropdown::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 20px;
+}
+
+.date-year-dropdown::-webkit-scrollbar-thumb:hover {
+  background-color: #b3b3b3;
+}
+
+.date-year-dropdown {
+  appearance: none;
+  -webkit-appearance: none;
+  /* Для Safari */
+  -moz-appearance: none;
+  /* Для Firefox */
+}
+
