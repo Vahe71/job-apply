@@ -31,9 +31,6 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
   onChangeApplyData,
   errors,
 }) => {
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
 
   const [smallScreen, setSmallScreen] = useState(false);
 
@@ -80,10 +77,11 @@ export const PerMilestone: React.FC<MilestonesProps> = ({
         </p>
         <div className="mt-[22px] sm:mt-[12px] lg:mt-[15px] flex flex-col gap-[18px]">
           {jobApplyData.milestones.map((item, i) => {
-            const error = errors.milestones.find((err) => err.id === item.id);
+            const error = errors?.milestones?.find((err) => err?.id === item.id) || null;
+
             return (
               <div key={i} className="flex gap-[12px]">
-                <span className={`w-[12px] ${i === 0 ? "mt-[44px]" : "mt-[9px]"}`}>{i + 1}</span>
+                <span className={`w-[12px] ${i === 0 ? "mt-[44px]" : "mt-[44px] lg:mt-[9px]"}`}>{i + 1}</span>
                 <div className="flex flex-col lg:flex-row w-full justify-between gap-[22px] lg:gap-[28px]">
                   <div className="flex w-full lg:max-w-[409px] 2xl:max-w-[637px] max-w-[414px]">
                     <div className="w-full">

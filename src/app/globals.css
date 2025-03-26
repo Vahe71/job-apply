@@ -158,3 +158,31 @@ body {
 .react-datepicker-popper {
   width: calc(100% + 34px);
 }
+
+@keyframes slideIn {
+  0% {
+    transform: translate(100%, 100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideInMobile {
+  0% {
+    transform: translate(0%, 100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+@media (max-width: 640px) {
+  .animate-slideIn {
+    animation: slideInMobile 0.5s ease-out forwards;
+  }
+}

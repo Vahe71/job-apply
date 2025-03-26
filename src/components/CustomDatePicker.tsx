@@ -24,7 +24,6 @@ const CustomDatePicker: React.FC<DatePickerProps> = ({
     return { value: year };
   });
   const defaultYear = { value: 2025, label: "2025" };
-  console.log(years);
 
   const months = [
     "January",
@@ -40,9 +39,6 @@ const CustomDatePicker: React.FC<DatePickerProps> = ({
     "November",
     "December",
   ];
-  useEffect(() => {
-    console.log(dueDate);
-  }, [dueDate]);
 
   const customStyles = {
     control: (base, state) => ({
@@ -159,8 +155,9 @@ const CustomDatePicker: React.FC<DatePickerProps> = ({
             setDueDate(null);
           }
         }}
+        onKeyDown={(e) => {e.preventDefault()}}
         locale={enGB}
-        dateFormat="dd.MM.yyyy"
+        dateFormat="dd/MM/yyyy"
         className=" focus:outline-none outline-none flex-grow text-[#8B939F] text-[16px] font-medium block my-[12px] w-full"
         calendarClassName="translate-x-[8px] bg-white border border-gray-200 !rounded-[12px] p-2 pt-[18px] w-full min-h-[350px] !flex flex-col items-center shadow-[2px_2px_5px_0px_rgba(0,0,0,0.1)]"
         dayClassName={(date) =>

@@ -12,7 +12,7 @@ export const JobDetailsPopup: React.FC<JobDetailsPopupProps> = ({
 }) => {
   return (
     <div className="flex items-end w-[100vw] h-[100vh] bg-[rgba(0,_0,_0,_0.42)] z-10 fixed top-0 left-0  overflow-hidden pt-[80px] sm:pt-0">
-      <div className="w-full flex justify-end h-full max-h-[1055px] sm:max-h-[100vh] lg:max-h-[786px] 2xl:max-h-[964px]">
+      <div className="w-full flex justify-end h-full max-h-[1055px] sm:max-h-[100vh] lg:max-h-[786px] 2xl:max-h-[964px] animate-slideIn ">
         <div className="bg-white p-[20px] pb-[40px] sm:p-[24px_20px_24px_40px] rounded-tl-[20px] sm:rounded-tl-[50px] max-h-[100vh] lg:max-h-[786px] 2xl:max-h-[964px] lg:max-w-[1250px] 2xl:max-w-[1533px] sm:max-w-[820px] w-full">
           <div className="w-full flex justify-between">
             <div

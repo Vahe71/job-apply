@@ -37,9 +37,8 @@ export const Terms: React.FC<TermsProps> = ({
       </p>
       <div>
         <div className="flex gap-[8px] mt-[30px] sm:mt-[19px]">
-          <div>
+          <div onClick={() => onChangeApplyData("paymentMethod", "milestone")}>
             <div className="flex gap-[8px]"><div
-              onClick={() => onChangeApplyData("paymentMethod", "milestone")}
               className={`w-[24px] h-[24px] rounded-[50%]  ${jobApplyData.paymentMethod === "milestone"
                 ? "border-[6px] border-[#18470D]"
                 : "border-[1px] border-[#AEB3BC]"
@@ -53,10 +52,9 @@ export const Terms: React.FC<TermsProps> = ({
           </div>
         </div>
         <div className="flex gap-[8px] 2xl:mt-[28px] mt-[19px] sm:mt-[20px] lg:mt-[22px]">
-          <div>
+          <div onClick={() => onChangeApplyData("paymentMethod", "completion")}>
             <div className="flex gap-[8px]"><div
-              onClick={() => onChangeApplyData("paymentMethod", "completion")}
-              className={`min-w-[24px] w-[24px] h-[24px] w-[18px] h-[18px] rounded-[50%]  ${jobApplyData.paymentMethod === "completion"
+              className={`min-w-[24px] w-[24px] h-[24px] rounded-[50%]  ${jobApplyData.paymentMethod === "completion"
                 ? "border-[5px] border-[#18470D]"
                 : "border-[2px] border-[#AEB3BC]"
                 } cursor-pointer`}
@@ -72,7 +70,7 @@ export const Terms: React.FC<TermsProps> = ({
       {jobApplyData.paymentMethod === "milestone" ? (
         <PerMilestone errors={errors} onChangeApplyData={onChangeApplyData} jobApplyData={jobApplyData} />
       ) : (
-        <Completion onChangeApplyData={onChangeApplyData} jobApplyData={jobApplyData} />
+        <Completion errors={errors.bid} onChangeApplyData={onChangeApplyData} jobApplyData={jobApplyData} />
       )}
     </div>
   );

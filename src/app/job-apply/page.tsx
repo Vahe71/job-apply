@@ -14,6 +14,12 @@ import { CalendarIcon } from "../../../public/icons/CalendarIcon";
 import { PersonBrainIcon } from "../../../public/icons/PersonBrainIcon";
 import { MoneyIcon } from "../../../public/icons/MoneyIcon";
 
+type ErrorsState = {
+  additionalInfo: boolean;
+  milestones: MilestoneError[];
+  bid: boolean;
+};
+
 const JobApply = () => {
   const [popupVisible, setPopupVisible] = useState(false);
   const [jobDetailsPopupVisible, setJobDetailsPopupVisible] = useState(false);
@@ -23,8 +29,14 @@ const JobApply = () => {
     milestones: [{ id: 1, desc: "", dueDate: null, amount: null }],
     bid: null,
   });
-  const [errors, setErrors] = useState({ additionalInfo: false, milestones: [], bid: false });
-
+  const [errors, setErrors] = useState<ErrorsState>({
+    additionalInfo: false,
+    milestones: [],
+    bid: false,
+  });
+  useEffect(() => {
+    console.log(errors, "errors");
+  }, [errors]);
   const changeApplyData = (keyName: string, value: any) => {
     if (jobApplyData.hasOwnProperty(keyName)) {
       setJobApplyData({
@@ -48,15 +60,22 @@ const JobApply = () => {
         ...prevErrors,
         additionalInfo: true,
       }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        additionalInfo: false,
+      }));
     }
 
-    if (jobApplyData.paymentMethod === 'milestone') {
+    if (jobApplyData.paymentMethod === "milestone") {
       const newMilestonesErrors = jobApplyData.milestones.map((milestone) => {
         const milestoneErrors: any = {};
         Object.keys(milestone).forEach((key) => {
           if (!milestone[key]) {
-            milestoneErrors[key] = 'error';
+            milestoneErrors[key] = "error";
             milestoneErrors.id = milestone.id;
+          } else {
+            return [];
           }
         });
         return Object.keys(milestoneErrors).length > 0 ? milestoneErrors : null;
@@ -68,9 +87,25 @@ const JobApply = () => {
           ...prevErrors,
           milestones: newMilestonesErrors,
         }));
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          milestones: [],
+        }));
       }
-    } else if (jobApplyData.paymentMethod === 'completion') {
-
+    } else if (jobApplyData.paymentMethod === "completion") {
+      if (!jobApplyData.bid) {
+        hasErrors = true;
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          bid: true
+        }));
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          bid: false
+        }));
+      }
     }
 
     if (!hasErrors) {
@@ -82,7 +117,9 @@ const JobApply = () => {
     <>
       {popupVisible && <JobApplyPopup setPopupVisible={setPopupVisible} />}
       <main className="px-[20px] sm:px-[40px] lg:max-w-[1280px] 2xl:max-w-[1547px] mx-auto lg:mt-[37px] 2xl:mt-[89px] sm:mt-[36px] mt-[42px]">
-        <h1 className="2xl:text-[40px] lg:text-[30px] sm:text-[24px] text-[20px] font-medium mb-[34px]">Apply for job</h1>
+        <h1 className="2xl:text-[40px] lg:text-[30px] sm:text-[24px] text-[20px] font-medium mb-[34px]">
+          Apply for job
+        </h1>
         <JobHeader
           postedDate={jobData.postedDate}
           country={jobData.country}
