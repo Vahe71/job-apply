@@ -1,14 +1,16 @@
 interface JobDescriptionProps {
   text: string;
   list?: string[];
+  customStyles?: string;
 }
 
 export const JobDescription: React.FC<JobDescriptionProps> = ({
   text,
   list,
+  customStyles
 }) => {
   return (
-    <div>
+    <div className={customStyles}>
       <p className="sm:text-[20px] text-[14px] font-medium mt-[6px] lg:mt-[8px] ">
         Description
       </p>

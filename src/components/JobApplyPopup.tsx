@@ -41,7 +41,7 @@ export const JobApplyPopup: React.FC<PopupProps> = ({
             Back to Home
           </button>
           <button className="w-[190px] h-[48px] text-[#18470D] text-[16px] rounded-[50px] cursor-pointer font-medium bg-[#CBEC5E]">
-            Create a new job
+            Search a New Job
           </button>
         </div>
       </div>
