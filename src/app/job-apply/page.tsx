@@ -4,7 +4,7 @@ import { JobHeader } from "../sections/job-header/JobHeader";
 import { InfoSectionGreen } from "@/components/InfoSectionGreen";
 import { JobSkills } from "../sections/job-skills/JobSkills";
 import { jobData } from "../page";
-import { Milestones } from "../sections/milestones/Milestones";
+import { Terms } from "../sections/terms/Terms";
 import { AdditionalInformation } from "../sections/additional-information/AdditionalInformation";
 import { AboutProject } from "../sections/about-project/AboutProject";
 import { JobApplyPopup } from "@/components/JobApplyPopup";
@@ -21,12 +21,7 @@ const JobApply = () => {
     milestones: [{ id: 1, desc: '', dueDate: null, amount: null }],
     bid: null
   });
-  const [errors, setErrors] = useState({ additionalInfo: false });
-
-  useEffect(() => {
-    // delete this
-    console.log(jobApplyData);
-  }, [jobApplyData]);
+  const [errors, setErrors] = useState({ additionalInfo: false, milestones: [], bid: false });
 
   const changeApplyData = (keyName: string, value: any) => {
     if (jobApplyData.hasOwnProperty(keyName)) {
@@ -43,15 +38,43 @@ const JobApply = () => {
   }, [jobDetailsPopupVisible]);
 
   const onSubmitApp = () => {
+    let hasErrors = false;
+
     if (!jobApplyData.additionalInfo.trim()) {
-      setErrors({
-        ...errors,
-        additionalInfo: true
-      });
-      return
+      hasErrors = true;
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        additionalInfo: true,
+      }));
     }
-    setPopupVisible(true)
-  }
+
+    if (jobApplyData.paymentMethod === 'milestone') {
+      const newMilestonesErrors = jobApplyData.milestones.map((milestone) => {
+        const milestoneErrors: any = {};
+        Object.keys(milestone).forEach((key) => {
+          if (!milestone[key]) {
+            milestoneErrors[key] = 'error';
+            milestoneErrors.id = milestone.id;
+          }
+        });
+        return Object.keys(milestoneErrors).length > 0 ? milestoneErrors : null;
+      });
+
+      if (newMilestonesErrors.some((err) => err !== null)) {
+        hasErrors = true;
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          milestones: newMilestonesErrors,
+        }));
+      }
+    } else if (jobApplyData.paymentMethod === 'completion') {
+
+    }
+
+    if (!hasErrors) {
+      setPopupVisible(true);
+    }
+  };
 
   return (
     <>
@@ -93,7 +116,8 @@ const JobApply = () => {
             <div className="2xl:mt-[30px] lg:mt-[20px] mt-[10px]">
               <InfoSectionGreen title="Terms" lineWidth="w-[111px]">
                 <div className="mt-[16px]">
-                  <Milestones
+                  <Terms
+                    errors={errors}
                     onChangeApplyData={changeApplyData}
                     jobApplyData={jobApplyData}
                   />

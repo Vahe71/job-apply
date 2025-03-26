@@ -1,22 +1,31 @@
 "use client";
 
-import CustomDatePicker from "@/components/CustomDatePicker";
 import { PerMilestone } from "../per-milestone/PerMilestone";
 import { Completion } from "../completion/Completion";
 
-interface MilestonesProps {
+interface TermsProps {
   jobApplyData: {
     paymentMethod: string;
     milestones: { id: number, desc: string, dueDate: Date | null, amount: number | null }[];
     additionalInfo: string;
-    bid: number
+    bid: number | null
+  };
+  errors: {
+    milestones: {
+      id: number;
+      desc: boolean;
+      dueDate: boolean;
+      amount: boolean
+    }[];
+    bid: boolean
   };
   onChangeApplyData: (keyName: string, value: any) => void;
 }
 
-export const Milestones: React.FC<MilestonesProps> = ({
+export const Terms: React.FC<TermsProps> = ({
   jobApplyData,
   onChangeApplyData,
+  errors
 }) => {
   return (
     <div>
@@ -61,7 +70,7 @@ export const Milestones: React.FC<MilestonesProps> = ({
       </div>
 
       {jobApplyData.paymentMethod === "milestone" ? (
-        <PerMilestone onChangeApplyData={onChangeApplyData} jobApplyData={jobApplyData} />
+        <PerMilestone errors={errors} onChangeApplyData={onChangeApplyData} jobApplyData={jobApplyData} />
       ) : (
         <Completion onChangeApplyData={onChangeApplyData} jobApplyData={jobApplyData} />
       )}
